@@ -1410,11 +1410,12 @@ body.dark-mode .contact-form-container,
 body.dark-mode .info-item,
 body.dark-mode .maintenance-plan,
 body.dark-mode .pricing-note {
-    background: #4a5568;
+    background: #3a4655;
     border-color: #5a6577;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
-/* Textos no modo escuro */
+/* Textos no modo escuro - Títulos principais */
 body.dark-mode .section-title,
 body.dark-mode .service-card h3,
 body.dark-mode .portfolio-content h3,
@@ -1422,35 +1423,66 @@ body.dark-mode .member-info h3,
 body.dark-mode .pricing-header h3,
 body.dark-mode .contact-method h4,
 body.dark-mode .info-item h4,
-body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4 {
-    color: #f7fafc;
+body.dark-mode .contact-form-container h3,
+body.dark-mode .faq-question h3,
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4 {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
+/* Textos no modo escuro - Parágrafos e descrições */
 body.dark-mode .section-subtitle,
 body.dark-mode .service-card p,
 body.dark-mode .portfolio-content p,
 body.dark-mode .member-description,
+body.dark-mode .member-role,
 body.dark-mode .pricing-description,
 body.dark-mode .contact-method p,
 body.dark-mode .info-item p,
+body.dark-mode .faq-answer p,
 body.dark-mode p {
-    color: #a0aec0;
+    color: #e2e8f0 !important;
+}
+
+/* Textos especiais no modo escuro */
+body.dark-mode .hero-title {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .hero-subtitle {
+    color: #f7fafc !important;
+}
+
+body.dark-mode .member-email {
+    color: #90cdf4 !important;
+}
+
+body.dark-mode .stat-number {
+    color: #ffffff !important;
+}
+
+body.dark-mode .stat-label {
+    color: #e2e8f0 !important;
 }
 
 /* Elementos específicos no modo escuro */
 body.dark-mode .about-stats,
 body.dark-mode .payment-phase,
 body.dark-mode .payment-faq {
-    background: #4a5568;
+    background: #3a4655;
 }
 
 body.dark-mode .faq-question {
-    background: #4a5568;
-    color: #f7fafc;
+    background: #3a4655;
+    color: #ffffff !important;
 }
 
 body.dark-mode .faq-question:hover {
-    background: #5a6577;
+    background: #4a5568;
 }
 
 body.dark-mode .faq-answer {
@@ -1458,7 +1490,9 @@ body.dark-mode .faq-answer {
 }
 
 body.dark-mode .member-icon {
-    background: #4a5568;
+    background: #3a4655;
+    color: #667eea !important;
+    border: 2px solid #667eea;
 }
 
 /* Formulários no modo escuro */
@@ -1466,13 +1500,54 @@ body.dark-mode .form-group input,
 body.dark-mode .form-group select,
 body.dark-mode .form-group textarea {
     background: #2d3748;
-    border-color: #5a6577;
-    color: #f7fafc;
+    border: 2px solid #4a5568;
+    color: #ffffff !important;
 }
 
 body.dark-mode .form-group input::placeholder,
 body.dark-mode .form-group textarea::placeholder {
-    color: #a0aec0;
+    color: #cbd5e0 !important;
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group select:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: #667eea;
+    background: #374151;
+}
+
+/* Skills e tags no modo escuro */
+body.dark-mode .skill {
+    background: #667eea;
+    color: #ffffff !important;
+}
+
+body.dark-mode .tag {
+    background: #4a5568;
+    color: #e2e8f0 !important;
+}
+
+/* Preços no modo escuro */
+body.dark-mode .price .amount,
+body.dark-mode .price .currency {
+    color: #ffffff !important;
+}
+
+body.dark-mode .pricing-features li {
+    color: #e2e8f0 !important;
+}
+
+/* Features no modo escuro */
+body.dark-mode .feature-item h3 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .feature-item p {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .feature-item i {
+    color: #667eea !important;
 }
 
 /* Footer no modo escuro */
@@ -1497,4 +1572,84 @@ body.dark-mode .theme-toggle:hover {
     background: rgba(0, 0, 0, 0.5);
     border-color: #f39c12;
     color: #fff;
+}
+
+/* Navegação no modo escuro */
+body.dark-mode .nav-links a {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .nav-links a:hover {
+    color: #f7fafc !important;
+}
+
+body.dark-mode .hamburger span {
+    background: #ffffff !important;
+}
+
+/* Botões no modo escuro */
+body.dark-mode .btn {
+    background: #667eea;
+    color: #ffffff !important;
+    border: none;
+}
+
+body.dark-mode .btn:hover {
+    background: #5a67d8;
+    color: #ffffff !important;
+}
+
+body.dark-mode .btn-outline {
+    border: 2px solid #667eea;
+    color: #667eea !important;
+    background: transparent;
+}
+
+body.dark-mode .btn-outline:hover {
+    background: #667eea;
+    color: #ffffff !important;
+}
+
+/* Lista de preços no modo escuro */
+body.dark-mode .pricing-features li::before {
+    color: #81c784 !important;
+}
+
+/* Melhorias para o hero no modo escuro */
+body.dark-mode .hero {
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+}
+
+body.dark-mode .hero h1 {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .hero p {
+    color: #e2e8f0 !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer melhorado no modo escuro */
+body.dark-mode footer {
+    background: #1a202c !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .footer-content h3 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .footer-content p,
+body.dark-mode .footer-content li {
+    color: #cbd5e0 !important;
+}
+
+body.dark-mode .footer-content a {
+    color: #81c784 !important;
+}
+
+body.dark-mode .footer-content a:hover {
+    color: #a5d6a7 !important;
 }

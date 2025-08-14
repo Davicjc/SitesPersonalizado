@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Silva - Designer Gráfico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #e74c3c;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 500,600 1000,800 1000,1000"/><circle fill="rgba(255,255,255,0.05)" cx="200" cy="200" r="100"/><circle fill="rgba(255,255,255,0.08)" cx="800" cy="300" r="150"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            border: 5px solid rgba(255,255,255,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.2s forwards;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.6);
+        }
+
+        .btn.btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn.btn-outline:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            padding: 2rem 0;
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .skill {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill i {
+            color: #e74c3c;
+            font-size: 1.2rem;
+        }
+
+        .about-stats {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat {
+            margin-bottom: 2rem;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .portfolio {
+            background: white;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle fill="rgba(255,255,255,0.1)" cx="30" cy="30" r="10"/><circle fill="rgba(255,255,255,0.05)" cx="70" cy="60" r="15"/></svg>');
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: white;
+            gap: 1rem;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay a {
+            color: white;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .portfolio-overlay a:hover {
+            background: #e74c3c;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .portfolio-content p {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #e74c3c;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .services {
+            background: #f8f9fa;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #e74c3c);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #e74c3c;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .service-card p {
+            color: #7f8c8d;
+            line-height: 1.7;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #f39c12;
+            width: 30px;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            outline: none;
+            transition: background 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            background: white;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            background: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <i class="fas fa-palette"></i>
+                Pedro Silva
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-photo">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h1>Pedro Silva</h1>
+                <div class="subtitle">Designer Gráfico & UI/UX</div>
+                <p>Criando experiências visuais memoráveis através do design. Especializado em identidade visual, design digital e interfaces que conectam marcas aos seus usuários de forma autêntica e impactante.</p>
+                <a href="#portfolio" class="btn">Ver Portfolio</a>
+                <a href="#contact" class="btn btn-outline">Contratar</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Sobre Mim</h3>
+                    <p>Sou um designer gráfico apaixonado por criar soluções visuais que fazem a diferença. Com mais de 6 anos de experiência, ajudo marcas e empresas a comunicar suas mensagens de forma clara, atrativa e memorável.</p>
+                    
+                    <p>Minha abordagem combina criatividade com estratégia, sempre focando nas necessidades do cliente e do usuário final. Acredito que o bom design não é apenas bonito, mas também funcional e eficaz.</p>
+                    
+                    <div class="skills-grid">
+                        <div class="skill">
+                            <i class="fab fa-adobe"></i>
+                            <span>Adobe Creative Suite</span>
+                        </div>
+                        <div class="skill">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>Identidade Visual</span>
+                        </div>
+                        <div class="skill">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>UI/UX Design</span>
+                        </div>
+                        <div class="skill">
+                            <i class="fas fa-print"></i>
+                            <span>Design Gráfico</span>
+                        </div>
+                        <div class="skill">
+                            <i class="fas fa-code"></i>
+                            <span>Prototipagem</span>
+                        </div>
+                        <div class="skill">
+                            <i class="fas fa-camera"></i>
+                            <span>Fotografia</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn">Vamos Conversar</a>
+                </div>
+                
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Projetos Concluídos</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Clientes Satisfeitos</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">6+</span>
+                        <span class="stat-label">Anos de Experiência</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Taxa de Aprovação</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section portfolio">
+        <div class="container">
+            <h2 class="section-title">Meu Portfolio</h2>
+            <p class="section-subtitle">Uma seleção dos meus trabalhos mais recentes e impactantes</p>
+            
+            <div class="portfolio-filters">
+                <button class="filter-btn active">Todos</button>
+                <button class="filter-btn">Identidade Visual</button>
+                <button class="filter-btn">UI/UX</button>
+                <button class="filter-btn">Design Gráfico</button>
+                <button class="filter-btn">Web Design</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-palette"></i>
+                        <div class="portfolio-overlay">
+                            <a href="#"><i class="fas fa-eye"></i></a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Identidade Visual - Café Aurora</h3>
+                        <p>Desenvolvimento completo de identidade visual para cafeteria premium, incluindo logo, papelaria e aplicações.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Logo</span>
+                            <span class="tag">Papelaria</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div class="portfolio-overlay">
+                            <a href="#"><i class="fas fa-eye"></i></a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>App Design - FitTracker</h3>
+                        <p>Interface e experiência do usuário para aplicativo de fitness, focando em usabilidade e motivação.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">UI/UX</span>
+                            <span class="tag">Mobile</span>
+                            <span class="tag">App Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-globe"></i>
+                        <div class="portfolio-overlay">
+                            <a href="#"><i class="fas fa-eye"></i></a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Website - Arquitetura Moderna</h3>
+                        <p>Design responsivo para escritório de arquitetura, destacando projetos e criando experiência visual impactante.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Web Design</span>
+                            <span class="tag">Responsivo</span>
+                            <span class="tag">Portfolio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-shopping-bag"></i>
+                        <div class="portfolio-overlay">
+                            <a href="#"><i class="fas fa-eye"></i></a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>E-commerce - Moda Sustentável</h3>
+                        <p>Plataforma de vendas online com foco em sustentabilidade, design limpo e experiência de compra otimizada.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">E-commerce</span>
+                            <span class="tag">UX</span>
+                            <span class="tag">Sustentabilidade</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-print"></i>
+                        <div class="portfolio-overlay">
+                            <a href="#"><i class="fas fa-eye"></i></a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Catálogo - Produtos Artesanais</h3>
+                        <p>Design editorial para catálogo de produtos artesanais, valorizando a tradição e qualidade dos produtos.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Editorial</span>
+                            <span class="tag">Catálogo</span>
+                            <span class="tag">Print</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="portfolio-overlay">
+                            <a href="#"><i class="fas fa-eye"></i></a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Dashboard - Análise de Dados</h3>
+                        <p>Interface para plataforma de análise de dados, priorizando clareza na visualização de informações complexas.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Dashboard</span>
+                            <span class="tag">Data Viz</span>
+                            <span class="tag">Interface</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section services">
+        <div class="container">
+            <h2 class="section-title">Meus Serviços</h2>
+            <p class="section-subtitle">Soluções completas de design para suas necessidades</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-palette service-icon"></i>
+                    <h3>Identidade Visual</h3>
+                    <p>Criação completa de marca, incluindo logo, paleta de cores, tipografia e manual de aplicação para fortalecer sua presença no mercado.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt service-icon"></i>
+                    <h3>UI/UX Design</h3>
+                    <p>Design de interfaces intuitivas e experiências de usuário envolventes para aplicativos e websites que convertem visitantes em clientes.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-globe service-icon"></i>
+                    <h3>Web Design</h3>
+                    <p>Websites responsivos e modernos que representam sua marca de forma profissional e oferecem excelente experiência em todos os dispositivos.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-print service-icon"></i>
+                    <h3>Design Gráfico</h3>
+                    <p>Materiais impressos e digitais como cartões de visita, flyers, banners, apresentações e peças publicitárias impactantes.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-shopping-cart service-icon"></i>
+                    <h3>E-commerce Design</h3>
+                    <p>Lojas virtuais otimizadas para vendas, com foco na experiência do usuário e conversão de visitantes em compradores.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-chart-bar service-icon"></i>
+                    <h3>Consultoria em Design</h3>
+                    <p>Análise e orientação estratégica para otimizar sua comunicação visual e maximizar o impacto da sua marca no mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Vamos Trabalhar Juntos?</h3>
+                    <p>Estou sempre disponível para novos projetos e desafios criativos. Entre em contato e vamos transformar suas ideias em realidade visual.</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>E-mail:</strong><br>
+                            pedro.silva.design@gmail.com<br>
+                            contato@pedrosilvadesign.com.br
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Telefone:</strong><br>
+                            (11) 98765-4321<br>
+                            WhatsApp disponível
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Localização:</strong><br>
+                            São Paulo, SP<br>
+                            Atendimento presencial ou remoto
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Disponibilidade:</strong><br>
+                            Segunda à Sexta: 9h às 18h<br>
+                            Resposta em até 24h
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Solicitar Orçamento</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>Nome Completo:</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>E-mail:</label>
+                            <input type="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Telefone:</label>
+                            <input type="tel">
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo de Projeto:</label>
+                            <select>
+                                <option value="">Selecione</option>
+                                <option value="identidade">Identidade Visual</option>
+                                <option value="website">Website</option>
+                                <option value="app">App Design</option>
+                                <option value="grafico">Design Gráfico</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="consultoria">Consultoria</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Descreva seu projeto:</label>
+                            <textarea rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; background: white; color: #667eea;">Enviar Solicitação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <h3>Pedro Silva - Designer Gráfico</h3>
+            <p>Transformando ideias em experiências visuais memoráveis</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-behance"></i></a>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2025 Pedro Silva Design - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Portfolio filters
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.textContent.toLowerCase();
+                alert(`Filtro "${filter}" aplicado!\n\nEm um site real, isso filtraria os projetos por categoria.`);
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado pelo seu interesse!\n\nRecebemos sua solicitação e entraremos em contato em até 24 horas para discutir seu projeto. 🎨');
+        });
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent);
+                const increment = target / 100;
+                let count = 0;
+                
+                const timer = setInterval(() => {
+                    count += increment;
+                    if (count >= target) {
+                        counter.textContent = counter.textContent;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(count) + (counter.textContent.includes('+') ? '+' : counter.textContent.includes('%') ? '%' : '');
+                    }
+                }, 20);
+            });
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target.classList.contains('about-stats')) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(document.querySelector('.about-stats'));
+    </script>
+</body>
+</html>

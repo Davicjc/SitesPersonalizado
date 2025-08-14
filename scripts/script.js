@@ -340,3 +340,60 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// ===========================
+// MODO ESCURO (DARK MODE)
+// ===========================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Verificar se há preferência salva
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Aplicar tema inicial
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        enableDarkMode();
+    } else {
+        enableLightMode();
+    }
+    
+    // Event listener para o botão
+    themeToggle.addEventListener('click', function() {
+        if (body.classList.contains('dark-mode')) {
+            enableLightMode();
+        } else {
+            enableDarkMode();
+        }
+    });
+    
+    // Função para ativar modo escuro
+    function enableDarkMode() {
+        body.classList.add('dark-mode');
+        themeIcon.className = 'fas fa-sun';
+        themeToggle.setAttribute('aria-label', 'Alternar para modo claro');
+        localStorage.setItem('theme', 'dark');
+    }
+    
+    // Função para ativar modo claro
+    function enableLightMode() {
+        body.classList.remove('dark-mode');
+        themeIcon.className = 'fas fa-moon';
+        themeToggle.setAttribute('aria-label', 'Alternar para modo escuro');
+        localStorage.setItem('theme', 'light');
+    }
+    
+    // Detectar mudanças de preferência do sistema
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        if (!localStorage.getItem('theme')) {
+            if (e.matches) {
+                enableDarkMode();
+            } else {
+                enableLightMode();
+            }
+        }
+    });
+});

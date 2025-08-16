@@ -1653,3 +1653,67 @@ body.dark-mode .footer-content a {
 body.dark-mode .footer-content a:hover {
     color: #a5d6a7 !important;
 }
+
+/* Estilos específicos para o formulário de orçamento */
+#orcamentoForm {
+    position: relative;
+}
+
+#orcamentoForm .btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#orcamentoForm .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+#orcamentoForm .btn::before {
+    content: '\f0e0';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#orcamentoForm .btn:hover::before {
+    opacity: 1;
+}
+
+#orcamentoForm .btn:hover {
+    padding-left: 45px;
+}
+
+/* Validação visual dos campos */
+#orcamentoForm input:valid,
+#orcamentoForm select:valid,
+#orcamentoForm textarea:valid {
+    border-color: #27ae60;
+}
+
+#orcamentoForm input:invalid:not(:placeholder-shown),
+#orcamentoForm select:invalid:not(:placeholder-shown) {
+    border-color: #e74c3c;
+}
+
+/* Feedback visual para campos preenchidos */
+.form-group {
+    position: relative;
+}
+
+.form-group input:valid::after,
+.form-group select:valid::after {
+    content: '✓';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #27ae60;
+    font-weight: bold;
+}

@@ -58,27 +58,101 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Formulário de contato
-    const contactForm = document.querySelector('.contact-form');
+    // Formulário de orçamento
+    const orcamentoForm = document.getElementById('orcamentoForm');
     
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+    if (orcamentoForm) {
+        orcamentoForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simular envio do formulário
-            const submitBtn = this.querySelector('button[type="submit"]');
+            // Coletar dados do formulário
+            const nome = document.getElementById('nomeCompleto').value;
+            const email = document.getElementById('emailCliente').value;
+            const telefone = document.getElementById('telefoneCliente').value || 'Não informado';
+            const tipoSite = document.getElementById('tipoSite').value;
+            const descricao = document.getElementById('descricaoProjeto').value || 'Não informado';
+            
+            // Validar campos obrigatórios
+            if (!nome || !email || !tipoSite) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+            
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Por favor, insira um email válido.');
+                return;
+            }
+            
+            // Mapear tipos de site para nomes mais descritivos
+            const tiposSite = {
+                'loja': 'Site para Loja',
+                'lanchonete': 'Site para Lanchonete', 
+                'empresa': 'Site Empresarial',
+                'salao': 'Site para Salão',
+                'educacional': 'Site Educacional',
+                'personalizado': 'Site Personalizado'
+            };
+            
+            // Criar o corpo do email
+            const assunto = `Solicitação de Orçamento - ${tiposSite[tipoSite]}`;
+            const corpoEmail = `Olá! Gostaria de solicitar um orçamento para desenvolvimento de website.
+
+DADOS DO CLIENTE:
+Nome: ${nome}
+E-mail: ${email}
+Telefone/WhatsApp: ${telefone}
+
+PROJETO SOLICITADO:
+Tipo de Site: ${tiposSite[tipoSite]}
+
+DESCRIÇÃO DO PROJETO:
+${descricao}
+
+Aguardo contato para mais detalhes e orçamento.
+
+Atenciosamente,
+${nome}`;
+            
+            // IMPORTANTE: Emails que receberão as solicitações de orçamento
+            // Sistema enviará para ambos os emails automaticamente
+            const emailDavi = 'davicjc+site@gmail.com';                    // ✅ EMAIL DO DAVI
+            const emailPaulo = 'paulog25.comercial+site@gmail.com';        // ✅ EMAIL DO PAULO
+            const emailsDestino = `${emailDavi},${emailPaulo}`;
+            const mailtoLink = `mailto:${emailsDestino}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpoEmail)}`;
+            
+            // Mostrar feedback antes de abrir o email
+            const submitBtn = orcamentoForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             
-            submitBtn.textContent = 'Enviando...';
+            submitBtn.textContent = 'Preparando email...';
             submitBtn.disabled = true;
             
-            // Simular delay de envio
             setTimeout(() => {
-                alert('Obrigado! Sua mensagem foi enviada com sucesso. Entraremos em contato em breve!');
-                this.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
+                // Abrir cliente de email
+                window.location.href = mailtoLink;
+                
+                // Mostrar mensagem de confirmação
+                setTimeout(() => {
+                    alert('✉️ O cliente de email foi aberto com suas informações preenchidas!\n\nBasta clicar em "Enviar" no seu programa de email para finalizar a solicitação.');
+                    orcamentoForm.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 500);
+            }, 1000);
+        });
+        
+        // Adicionar validação em tempo real
+        const campos = orcamentoForm.querySelectorAll('input, select, textarea');
+        campos.forEach(campo => {
+            campo.addEventListener('input', function() {
+                if (this.checkValidity()) {
+                    this.style.borderColor = '#27ae60';
+                } else {
+                    this.style.borderColor = '#e74c3c';
+                }
+            });
         });
     }
 

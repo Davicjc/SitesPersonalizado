@@ -691,18 +691,18 @@
 
                 <div class="contact-form-container">
                     <h3>Solicite seu Orçamento</h3>
-                    <form class="contact-form">
+                    <form class="contact-form" id="orcamentoForm">
                         <div class="form-group">
-                            <input type="text" placeholder="Seu nome completo" required>
+                            <input type="text" id="nomeCompleto" placeholder="Seu nome completo" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Seu e-mail" required>
+                            <input type="email" id="emailCliente" placeholder="Seu e-mail" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Seu telefone/WhatsApp">
+                            <input type="tel" id="telefoneCliente" placeholder="Seu telefone/WhatsApp">
                         </div>
                         <div class="form-group">
-                            <select required>
+                            <select id="tipoSite" required>
                                 <option value="">Tipo de site desejado</option>
                                 <option value="loja">Site para Loja</option>
                                 <option value="lanchonete">Site para Lanchonete</option>
@@ -713,7 +713,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Conte-nos mais sobre seu projeto..." rows="5"></textarea>
+                            <textarea id="descricaoProjeto" placeholder="Conte-nos mais sobre seu projeto..." rows="5"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Solicitar Orçamento Gratuito</button>
                     </form>
